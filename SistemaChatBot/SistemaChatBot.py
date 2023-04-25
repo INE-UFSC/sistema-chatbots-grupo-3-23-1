@@ -4,6 +4,7 @@ class SistemaChatBot:
     def __init__(self,nomeEmpresa,lista_bots):
         self.__empresa=nomeEmpresa
         
+        self.__lista_bots = []
         for bot in lista_bots:
             if isinstance(bot, Bot):
                 self.__lista_bots.append(bot)
@@ -16,7 +17,8 @@ class SistemaChatBot:
 
     def mostra_menu(self):
         print('Os chat bots disponiveis no momento sao:')
-        for bot in enumerate(posicao, self.__lista_bots):
+        
+        for posicao, bot in enumerate(self.__lista_bots):
             print(f'{posicao} - Bot: {bot.nome} - Mensagem de apresentacao: {bot.apresentacao()}')
     
     def escolhe_bot(self):
@@ -31,16 +33,16 @@ class SistemaChatBot:
 
 
     def le_envia_comando(self):
-        comando = int(input('Digite o comando desejado (ou -1 fechar o programa sair): \n'))
+        comando = input('Digite o comando desejado (ou -1 fechar o programa sair): \n')
                  
         while self.__bot.executa_comando(comando) is None:
-            if comando == -1:
+            if comando == '-1':
                 self.__rodando = False
                 break
             
-            comando = int(input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n'))
+            comando = input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n')
         
-        if comando != -1:
+        if comando != '-1':
             print(self.__bot.executa_comando(comando))
 
     def inicio(self):
@@ -61,4 +63,4 @@ class SistemaChatBot:
                 break
         
         
-    
+
