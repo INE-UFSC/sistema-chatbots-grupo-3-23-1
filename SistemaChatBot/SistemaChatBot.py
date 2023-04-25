@@ -3,35 +3,62 @@ from Bots.Bot import Bot
 class SistemaChatBot:
     def __init__(self,nomeEmpresa,lista_bots):
         self.__empresa=nomeEmpresa
-        ##verificar se a lista de bots contém apenas bots
-        self.__lista_bots=lista_bots
+        
+        for bot in lista_bots:
+            if isinstance(bot, Bot):
+                self.__lista_bots.append(bot)
+        
         self.__bot = None
+        self.__rodando = True
     
     def boas_vindas(self):
-        pass
-        ##mostra mensagem de boas vindas do sistema
+        print(f'Ola, esse e o sistema de chatbots da empresa {self.__empresa}')
 
     def mostra_menu(self):
-        pass
-        ##mostra o menu de escolha de bots
+        print('Os chat bots disponiveis no momento sao:')
+        for bot in enumerate(posicao, self.__lista_bots):
+            print(f'{posicao} - Bot: {bot.nome} - Mensagem de apresentacao: {bot.apresentacao()}')
     
     def escolhe_bot(self):
-        pass
-        ##faz a entrada de dados do usuário e atribui o objeto ao atributo __bot 
+        indice = int(input('Digite o numero do chat bot desejado: \n'))
+        while indice < 0 or indice >= len(self.__lista_bots):
+            indice = int(input('Nao ha chat bot com esse numero. Digite o numero do chat bot desejado: \n'))
+        
+        self.__bot = self.__lista_bots[indice]
 
     def mostra_comandos_bot(self):
-        pass
-        ##mostra os comandos disponíveis no bot escolhido
+        print(self.__bot.mostra_comandos())
+
 
     def le_envia_comando(self):
-        pass
-        ##faz a entrada de dados do usuário e executa o comando no bot ativo
+        comando = int(input('Digite o comando desejado (ou -1 fechar o programa sair): \n'))
+                 
+        while self.__bot.executa_comando(comando) is None:
+            if comando == -1:
+                self.__rodando = False
+                break
+            
+            comando = int(input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n'))
+        
+        if comando != -1:
+            print(self.__bot.executa_comando(comando))
 
     def inicio(self):
-        pass
-        ##mostra mensagem de boas-vindas do sistema
-        ##mostra o menu ao usuário
-        ##escolha do bot      
-        ##mostra mensagens de boas-vindas do bot escolhido
-        ##entra no loop de mostrar comandos do bot e escolher comando do bot até o usuário definir a saída
-        ##ao sair mostrar a mensagem de despedida do bot
+        self.boas_vindas()
+        print()
+        self.mostra_menu()
+        print()
+        self.escolhe_bot()
+        print()
+        print(self.__bot.boas_vindas())
+        
+        while True:
+            self.mostra_comandos_bot()
+            self.le_envia_comando()
+            
+            if not self.__rodando:
+                print(self.__bot.despedida())
+                break
+        
+        
+    
