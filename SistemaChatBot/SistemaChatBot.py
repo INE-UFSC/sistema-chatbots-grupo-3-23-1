@@ -16,7 +16,7 @@ class SistemaChatBot:
         print(f'Ola, esse e o sistema de chatbots da empresa {self.__empresa}')
 
     def mostra_menu(self):
-        print('Os chat bots disponiveis no momento sao:')
+        print('Os chat bots disponiveis no momento sao:\n')
         
         for posicao, bot in enumerate(self.__lista_bots):
             print(f'{posicao} - Bot: {bot.nome} - Mensagem de apresentacao: {bot.apresentacao()}')
@@ -33,7 +33,7 @@ class SistemaChatBot:
 
 
     def le_envia_comando(self):
-        comando = input('Digite o comando desejado (ou -1 fechar o programa sair): \n')
+        comando = input('\nDigite o comando desejado (ou -1 fechar o programa sair): \n')
                  
         while self.__bot.executa_comando(comando) is None:
             if comando == '-1':
@@ -43,7 +43,7 @@ class SistemaChatBot:
             comando = input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n')
         
         if comando != '-1':
-            print(self.__bot.executa_comando(comando))
+            print(self.__bot.executa_comando(comando),"\n")
 
     def inicio(self):
         self.boas_vindas()
