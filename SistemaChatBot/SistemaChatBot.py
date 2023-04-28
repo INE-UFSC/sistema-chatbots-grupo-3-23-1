@@ -43,7 +43,7 @@ class SistemaChatBot:
             comando = input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n')
         
         if comando != '-1':
-            print(self.__bot.executa_comando(comando),"\n")
+            print(f'--> {self.__bot.nome} diz:\n', "--", self.__bot.executa_comando(comando),"\n")
 
     def inicio(self):
         self.boas_vindas()
@@ -52,14 +52,14 @@ class SistemaChatBot:
         print()
         self.escolhe_bot()
         print()
-        print(self.__bot.boas_vindas())
+        print(f'--> {self.__bot.nome} diz:', self.__bot.boas_vindas())
         
         while True:
             self.mostra_comandos_bot()
             self.le_envia_comando()
             
             if not self.__rodando:
-                print(self.__bot.despedida())
+                print(f'--> {self.__bot.nome} diz:',self.__bot.despedida())
                 break
         
         
