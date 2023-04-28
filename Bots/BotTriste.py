@@ -5,7 +5,7 @@ class BotTriste(Bot):
         super().__init__(nome)
 
         self._comandos['1'] = 'Qual o proposito da vida?'
-        self._comandos['2'] = 'Joaozinho comprou 5 ovelhas. 3 morreram. Quantas sobraram?'
+        self._comandos['2'] = 'Joaozinho comprou 3 ovelhas. 3 morreram. Quantas sobraram?'
         self._comandos['3'] = 'A aranha arranha o jarro ou o jarro arranha a aranha?'
         self._comandos['4'] = 'Como encontrar a felicidade?'
 
@@ -18,13 +18,13 @@ class BotTriste(Bot):
  
     def executa_comando(self, cmd):
         if cmd == '1':
-            return 'Infelizmente, provavelmente nao existe.  E mesmo que exista, certamente esse propósito não é passar a vida procurando por ele. Aceite.'
+            return f'Você perguntou: {self._comandos[cmd]}\n A resposta é que, infelizmente, provavelmente nao existe. Aceite.'
         elif cmd == '2':
-            return 'Infelizmente nenhuma'
+            return f'Você perguntou: {self._comandos[cmd]}\n Eu te respondo: Infelizmente nenhuma :('
         elif cmd == '3':
-            return 'Infelizmente insignificante, igual a vida'
+            return f'Você perguntou: {self._comandos[cmd]}\n Que pergunta infelizmente insignificante, tal como a vida...'
         elif cmd == '4':
-            return 'Felicidade é um nome bonito que damos para o objeto abstrato de nossa busca eterna. O que na verdade queremos encontrar  é  um sentido para vida. Como nunca o encontramos, dizemos que procuramos a felicidade. Estou errado? '
+            return f'Você perguntou: {self._comandos[cmd]}\n Pense nisso: Felicidade é um nome bonito que damos para o objeto abstrato de nossa busca eterna. O que na verdade queremos encontrar  é  um sentido para a vida. Como nunca o encontramos, dizemos que procuramos a felicidade. Estou errado? '
         else:
             return None
 

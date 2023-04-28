@@ -11,10 +11,10 @@ class BotFeliz(Bot):
         self._comandos['5'] = 'Como ser feliz???'
 
     def apresentacao(self):
-        return f'Eu sou {self.nome}. e estou sempre feliz, mesmo quando não quer estar! Me escolha, assim ficarei mais feliz!'
+        return f'Eu sou {self.nome} e estou sempre feliz! (Sempre mesmo, até me canso as vezes de tanto sorrir...) '
 
     def boas_vindas(self):
-        return f'Bom dia! Que voce ganhe na loteria hoje!'
+        return f'Bom dia! Mesmo que meu código me permitisse sentir algo além de felicidade, com certeza eu ainda sim ficaria feliz com a sua visita! Vamos conversar! '
  
     def executa_comando(self, cmd):
         if cmd == '1':

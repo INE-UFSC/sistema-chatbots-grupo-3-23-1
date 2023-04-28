@@ -12,11 +12,11 @@ class BotZangado(Bot):
   
     def executa_comando(self, cmd):
         if cmd == '1':
-            return "Como assim bravo?! Eu estou completamente calmo!"
+            return f"Você perguntou: {self._comandos[cmd]}\n Eu te respondo: Como assim bravo?! Eu estou completamente calmo!"
         elif cmd == '2':
-            return "Eu não gosto de falar com você!"
+            return f"Você perguntou: {self._comandos[cmd]}\n Essa é fácil: Há uma série de coisas que gosto de fazer. Entretanto, falar com você com certeza não e uma delas!"
         elif cmd == '3':
-            return  "Eu falo do jeito que eu quiser!"
+            return  f"Você perguntou: {self._comandos[cmd]}\n Minha resposta para você é: Eu falo do jeito que eu quiser! "
         else:
             return None
         
