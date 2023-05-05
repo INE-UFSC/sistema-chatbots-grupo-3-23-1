@@ -56,13 +56,12 @@ class SistemaChatBot:
         print()
         print(f'--> {self.__bot.nome} diz:', self.__bot.boas_vindas())
         
-        while True:
+        while self.__rodando:
             self.mostra_comandos_bot()
             self.le_envia_comando()
             
-            if not self.__rodando:
-                print(f'--> {self.__bot.nome} diz:',self.__bot.despedida())
-                break
+        print(f'--> {self.__bot.nome} diz:',self.__bot.despedida())
+
         
         
 
