@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from random import randint
-from controle import Comando
+from Bots.comando import Comando
 
 class Bot(ABC):
     def __init__(self, nome):
@@ -30,7 +30,8 @@ class Bot(ABC):
         pass
 
     def executa_comando(self, cmd):
-         return f' Você perguntou: {self._comandos[cmd].pergunta}\n-- Eu te respondo: {self._comandos[cmd].resposta}
+        cmd = int(cmd)
+        return f' Você perguntou: {self._comandos[cmd-1].pergunta}\n-- Eu te respondo: {self._comandos[cmd-1].resposta}'
 
     @abstractmethod
     def despedida(self):

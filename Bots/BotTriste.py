@@ -1,11 +1,11 @@
 from Bots.Bot import Bot
-from comando.comando import Comando
+from Bots.comando import Comando
 
 class BotTriste(Bot):
     def __init__(self,nome):
         super().__init__(nome)
 
-        self.comandos =[
+        self._comandos =[
             Comando('1', 'Qual o proposito da vida?', 'infelizmente, provavelmente nao existe. Aceite.' ),
             Comando('2', 'Joaozinho comprou 3 ovelhas. 3 morreram. Quantas sobraram?','Infelizmente nenhuma :(' ),
             Comando('3', 'A aranha arranha o jarro ou o jarro arranha a aranha?', 'Que pergunta infelizmente insignificante, tal como a vida...'),
