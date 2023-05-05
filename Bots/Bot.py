@@ -29,9 +29,8 @@ class Bot(ABC):
     def boas_vindas(self):
         pass
 
-    @abstractmethod
     def executa_comando(self, cmd):
-        pass
+         return f' Você perguntou: {self._comandos[cmd].pergunta}\n-- Eu te respondo: {self._comandos[cmd].resposta}
 
     @abstractmethod
     def despedida(self):
