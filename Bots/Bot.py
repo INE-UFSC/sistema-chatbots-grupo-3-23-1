@@ -5,7 +5,8 @@ from Bots.comando import Comando
 class Bot(ABC):
     def __init__(self, nome):
         self.__nome = nome
-        self._comandos = [Comando]
+        self._comandos = [] # será que seria melhor transformar em um dicionário? pq assim, o comando precisa ser nevessariamente um número, mas se algum grupo 
+        #criar um bot com um dicionário em que o comando não é um número, não vai rodar
 
     @property
     def nome(self):
@@ -16,10 +17,10 @@ class Bot(ABC):
         self.__nome = nome
 
     def mostra_comandos(self):
-        cmds = []
+        cmds = [] 
         for comando in self._comandos:
             cmds.append(f'{comando.cmd}: {comando.pergunta}')
-        return '\n'.join(cmds)
+        return '\n'.join(cmds) ### o que é .join??
 
     @abstractmethod
     def apresentacao(self):
