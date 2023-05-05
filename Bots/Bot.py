@@ -1,10 +1,11 @@
 from abc import ABC, abstractmethod
 from random import randint
+from controle import Comando
 
 class Bot(ABC):
     def __init__(self, nome):
         self.__nome = nome
-        self._comandos = {}
+        self._comandos = [Comando]
 
     @property
     def nome(self):
@@ -16,8 +17,8 @@ class Bot(ABC):
 
     def mostra_comandos(self):
         cmds = []
-        for comando, valor in self._comandos.items():
-            cmds.append(f'{comando}: {valor}')
+        for comando in self._comandos:
+            cmds.append(f'{comando.cmd}: {comando.pergunta}')
         return '\n'.join(cmds)
 
     @abstractmethod
@@ -33,5 +34,5 @@ class Bot(ABC):
         pass
 
     @abstractmethod
-    def despedida():
+    def despedida(self):
         pass
