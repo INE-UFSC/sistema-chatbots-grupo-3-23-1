@@ -31,7 +31,10 @@ class Bot(ABC):
 
     def executa_comando(self, cmd):
         cmd = int(cmd)
-        return f' Você perguntou: {self._comandos[cmd-1].pergunta}\n-- Eu te respondo: {self._comandos[cmd-1].resposta}'
+        if cmd in list(range(len(self._comandos) + 1)):
+            return f' Você perguntou: {self._comandos[cmd-1].pergunta}\n-- Eu te respondo: {self._comandos[cmd-1].resposta}'
+        else:
+            return None
 
     @abstractmethod
     def despedida(self):

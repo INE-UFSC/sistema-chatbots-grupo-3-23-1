@@ -34,14 +34,16 @@ class SistemaChatBot:
 
     def le_envia_comando(self):
         comando = input('\nDigite o comando desejado (ou -1 fechar o programa sair): \n')
-                 
-        while self.__bot.executa_comando(comando) is None:
+
+        if comando == '-1':
+            self.__rodando = False
+            return None
+        
+        while self.__bot.executa_comando(comando) is None:            
+            comando = input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n') 
             if comando == '-1':
                 self.__rodando = False
-                break
-            
-            comando = input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n')
-        
+                return None
         if comando != '-1':
             print(f'--> {self.__bot.nome} diz:\n', "--", self.__bot.executa_comando(comando),"\n")
 
