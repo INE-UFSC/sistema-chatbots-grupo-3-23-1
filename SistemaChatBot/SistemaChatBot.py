@@ -22,10 +22,18 @@ class SistemaChatBot:
             print(f'{posicao} - Bot: {bot.nome} - Mensagem de apresentacao: {bot.apresentacao()}')
     
     def escolhe_bot(self):
-        indice = int(input('Digite o numero do chat bot desejado: \n'))
-        while indice < 0 or indice >= len(self.__lista_bots):
-            indice = int(input('Nao ha chat bot com esse numero. Digite o numero do chat bot desejado: \n'))
-        
+        while True:
+            while True:
+                try:
+                    indice = int(input('Digite o numero do chat bot desejado: \n'))
+                    break
+                except ValueError:
+                    print('Formato de valor incorreto')
+            
+            if indice >=0 and indice < len(self.__lista_bots):
+                break
+            else:
+                print('Nao ha chat bot com esse numero.', end = ' ')
         self.__bot = self.__lista_bots[indice]
 
     def mostra_comandos_bot(self):
@@ -35,15 +43,16 @@ class SistemaChatBot:
     def le_envia_comando(self):
         comando = input('\nDigite o comando desejado (ou -1 fechar o programa sair): \n')
 
-        if comando == '-1':
-            self.__rodando = False
-            return None
+        #if comando == '-1':
+            #self.__rodando = False
+            #return None
         
-        while self.__bot.executa_comando(comando) is None:            
-            comando = input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n') 
+        while self.__bot.executa_comando(comando) is None:             
             if comando == '-1':
                 self.__rodando = False
                 return None
+            comando = input('Comando inexistente. Digite o comando desejado (ou -1 fechar o programa sair): \n')
+            
         if comando != '-1':
             print(f'--> {self.__bot.nome} diz:\n', "--", self.__bot.executa_comando(comando),"\n")
 
